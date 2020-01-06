@@ -1,5 +1,5 @@
 # Authentication demo
-## 1.基于kOA的用户鉴权demo
+## 1.基于KOA的用户鉴权demo
 自己学习过程中的小样例, 方便日后复习用
 
 **使用方法**
