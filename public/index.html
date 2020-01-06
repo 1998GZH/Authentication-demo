@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <input type="text" id="username"><br>
+  <input type="password" id="password"><br>
+  <input type="button" value="登录" id="submit">
+
+  <a href="./userInfo.html">userInfo</a><br>
+  <a href="./jwt.html">get_jwt_info</a>
+
+  <script>
+    let $ = el => document.querySelector(el);
+
+    $("#submit").addEventListener("click", () => {
+      let xhr = new XMLHttpRequest();
+      xhr.open("POST", "/login");
+      xhr.onload = function() {
+        // jwt进行持久化处理
+        let {token: jwtToken} = JSON.parse(this.responseText);
+        window.localStorage.setItem("token", jwtToken);
+      }
+      xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+      xhr.send(`username=${$('#username').value}&password=${$("#password").value}`);
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <input type="button" value="get jwt info">
+
+  <script>
+    let $ = el => document.querySelector(el);
+
+    $('input').addEventListener("click", () => {
+      let token = window.localStorage.getItem("token");
+
+      let xhr = new XMLHttpRequest();
+      xhr.open("POST", "http://localhost:3000/getJwtInfo");
+      // xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+      if (token) {
+        xhr.setRequestHeader("Authorization", `Bearer ${token}`);
+      }
+      xhr.onload = function() {
+        console.log(this.responseText);
+      }
+      xhr.send();
+    })
+  </script>
+</body>
+</html>
