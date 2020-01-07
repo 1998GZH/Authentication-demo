@@ -22,3 +22,11 @@ node jwt.js
 主要依赖的第三方库
 - koa-jwt
 - jsonwebtoken
+
+## 4.oAuth鉴权
+
+使用的样例基于github平台进行oAuth鉴权
+
+主要依赖第三方库
+
+- axios
